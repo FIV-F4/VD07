@@ -32,11 +32,12 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
-            login_user(user, remember=form.remember_me.data)
+            login_user(user, remember=form.remember.data)
             return redirect(url_for('home'))
         else:
             flash('Введён неправильный логин или пароль')
     return render_template('login.html', title='Login', form=form)
+
 
 @app.route('/logout')
 def logout():

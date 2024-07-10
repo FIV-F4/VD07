@@ -6,7 +6,7 @@
 
 {% block content %}
     <h1>Вход </h1>
-    <form action="{{ url_for('register') }}" method="post">
+    <form action="{{ url_for('login') }}" method="post">
         {{ form.hidden_tag() }}
         <div>
             {{ form.email.label }}
@@ -18,7 +18,7 @@
         </div>
         <div>
             {{ form.remember.label  }}
-            {{ form.remember}}
+            {{ form.remember()}}
         </div>
         <div>{{ form.submit() }}</div>
     </form>
