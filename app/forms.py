@@ -30,3 +30,10 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Запомнить меня')
     submit = SubmitField('Login')
+
+class AccountForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[Length(min=6, max=100)])
+    confirm_password = PasswordField('Confirm Password', validators=[EqualTo('password')])
+    submit = SubmitField('Update')
